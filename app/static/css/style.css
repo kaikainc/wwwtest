@@ -1,0 +1,398 @@
+html {
+    font-size: 16px;
+}
+
+body {
+    font-size: 16px;
+}
+
+.fa-arrow-up{
+    color:red;
+}
+.fa-arrow-down{
+    color:#3adf00;
+}
+.calc-01 {
+    color: #f16522;
+}
+
+.calc-02 {
+    color: #da3135;
+}
+
+.calc-03 {
+    color: #f05898;
+}
+.calc-04 {
+    color: #4a46aa;
+}
+.calc-05 {
+    color: #078dd8;
+}
+.calc-06 {
+    color: #2a91a8;
+}
+.calc-07 {
+    color: #80d23c;
+}
+.calc-08 {
+    color: #0b3861;
+}
+.calc-09 {
+    color: #8a58fa;
+}
+
+.tooltip-inner {
+    background-color: #F3E2A9;
+    color: #424242;
+    font-size: 12px;
+    z-index: 99;
+}
+
+.tooltip.bs-tooltip-right .arrow:before {
+    border-right-color: #F3E2A9 !important;
+}
+
+.tooltip.bs-tooltip-left .arrow:before {
+    border-left-color: #F3E2A9 !important;
+}
+
+.tooltip.bs-tooltip-bottom .arrow:before {
+    border-bottom-color: #F3E2A9 !important;
+}
+
+.tooltip.bs-tooltip-top .arrow:before {
+    border-top-color: #F3E2A9 !important;
+}
+
+.sps {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    transition: all 0.25s ease;
+    width: 30px;
+    height: 30px;
+    margin: 20px 20px;
+    display: none;
+}
+
+.sps--blw {
+    background-color: transparent;
+    color: #000;
+}
+
+.sps i {
+    font-size: 30px;
+    color: #ff9000;
+}
+  
+.home-header {
+    background: url(/static/img/intro-3.jpg) center center no-repeat;
+}
+
+.qry-header {
+    background: url(/static/img/intro-1.jpg) center center no-repeat;
+}
+
+.fix-header {
+    background: url(/static/img/intro-2.jpg) center center no-repeat;
+}
+
+.cim-header {
+    background: url(/static/img/intro-4.jpg) center center no-repeat;
+}
+
+.cust-header {
+    background: url(/static/img/intro-6.jpg) center center no-repeat;
+}
+
+.cust-header-2 {
+    background: url(/static/img/intro-5.jpg) center center no-repeat;
+}
+
+.ins-header {
+    background: url(/static/img/intro-7.jpg) center center no-repeat;
+}
+
+.fund-header {
+    background: url(/static/img/intro-9.jpg) center center no-repeat;
+}
+
+.asset-header {
+    background: url(/static/img/intro-10.jpg) center center no-repeat;
+}
+
+.jumbotron {
+    border-radius: 0;
+    height: 60vh;
+    position: relative;
+    z-index: -20;
+}
+
+.jumbotron:before {
+    content: "";
+    background: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -10;
+}
+
+.jumbotron .container h1 {
+    color: #fff;
+}
+
+.jumbotron .container p {
+    color: #eee;
+}
+
+/* Nav Menu Essentials */
+
+.nav-menu,
+.nav-menu * {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.nav-menu ul {
+    position: absolute;
+    display: none;
+    top: 100%;
+    left: 0;
+    z-index: 99;
+}
+
+.nav-menu li {
+    position: relative;
+    white-space: nowrap;
+}
+
+.nav-menu>li {
+    float: left;
+}
+
+.nav-menu li:hover>ul,
+.nav-menu li.sfHover>ul {
+    display: block;
+}
+
+.nav-menu ul ul {
+    top: 0;
+    left: 100%;
+}
+
+.nav-menu ul li {
+    min-width: 180px;
+}
+
+/* Nav Menu Arrows */
+
+.sf-arrows .sf-with-ul {
+    padding-right: 30px;
+}
+
+.sf-arrows .sf-with-ul:after {
+    content: "\f107";
+    position: absolute;
+    right: 15px;
+    font-family: "Font Awesome\ 5 Free";
+    font-style: normal;
+    font-weight: 900;
+}
+
+.sf-arrows ul .sf-with-ul:after {
+    content: "\f105";
+}
+
+/* Nav Meu Container */
+
+#nav-menu-container {
+    float: right;
+    margin: 0 20px 0 0;
+}
+
+@media (max-width: 768px) {
+    #nav-menu-container {
+        display: none;
+    }
+}
+
+/* Nav Meu Styling */
+
+.nav-menu a {
+    padding: 0 8px 10px 8px;
+    text-decoration: none;
+    display: inline-block;
+    color: #000;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: 14px;
+    outline: none;
+}
+
+.nav-menu>li {
+    margin-left: 10px;
+}
+
+.nav-menu>li>a:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #2dc997;
+    visibility: hidden;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.nav-menu a:hover:before,
+.nav-menu li:hover>a:before,
+.nav-menu .menu-active>a:before {
+    visibility: visible;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+}
+
+.nav-menu ul {
+    margin: 4px 0 0 0;
+    border: 1px solid #e7e7e7;
+}
+
+.nav-menu ul li {
+    background: #fff;
+}
+
+.nav-menu ul li:first-child {
+    border-top: 0;
+}
+
+.nav-menu ul li a {
+    padding: 10px;
+    color: #333;
+    transition: 0.3s;
+    display: block;
+    font-size: 14px;
+    text-transform: none;
+}
+
+.nav-menu ul li a:hover {
+    background: #2dc997;
+    color: #fff;
+}
+
+.nav-menu ul ul {
+    margin: 0;
+}
+
+/* 自定义表格字体大小 */
+.table tr th {
+    font-size: 12px;
+}
+
+.table tr td {
+    font-size: 12px;
+}
+
+/* 增幅降幅比例 */
+.small-ratio {
+    position: absolute; 
+    right: 5px; 
+    bottom: 2px; 
+    font-size: 12px;
+}
+
+/* jquery.sparkline */
+.tran_bar {
+    height: 42px;
+    width: 70px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    visibility: hidden;
+    background: rgb(0, 0, 0) transparent;
+    background-color: rgba(0,0,0,0.6);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+    color: white;
+    font: 10px arial, san serif;
+    text-align: left;
+    white-space: nowrap;
+    padding: 5px;
+    border: 1px solid white;
+    z-index: 10000;    
+}
+
+/* 遮罩动画 */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background: url(images/overlay.png) repeat 0 0; 
+    opacity: 0.5;
+}
+.loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -16px;
+    margin-left: -16px;
+}
+
+/* 弹窗关闭动画效果 */
+
+.watching {
+    animation: watch 2s;
+}
+
+@keyframes watch {
+    0% {
+        background-color: #81DAF5;
+    }
+    100% {
+        background-color: #ffff;
+    }
+}
+
+/* 水印 */
+.watermask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+/*趋势缩略图*/
+.tran_line {
+    height: 42px;
+    width: 130px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    visibility: hidden;
+    background: rgb(0, 0, 0) transparent;
+    background-color: rgba(0,0,0,0.6);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+    color: white;
+    font: 10px arial, san serif;
+    text-align: left;
+    white-space: nowrap;
+    padding: 5px;
+    border: 1px solid white;
+    z-index: 10000;    
+}

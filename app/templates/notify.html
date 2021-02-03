@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="/static/img/favicon.ico">
+    <title>提示</title>
+    <style type="text/css">
+        .warning {
+            background: none repeat scroll 0 0 rgb(195, 224, 243);
+            border: 1px solid rgb(195, 224, 243);
+            margin: auto;
+            width: 540px;
+            margin-top: 20px;
+        }
+        .warning h4 {
+            margin: 10px 20px;
+            font-size: 24px;
+        }
+        .warning p {
+            margin-left: 20px;
+            font-size: 14px;
+        }
+        .warning ul {
+            margin-left: 10px;
+            font-size: 14px;
+        }
+        .warning ul:nth-child(1) {
+            margin-left: -20px;
+            font-size: 10px;
+        }
+    </style>
+    </head>
+    <body>
+        {% if lock_status %}
+        <h4 style="text-align: center">系统正在维护, 请耐心等候...</h4>
+        {% endif %}
+        
+    </body>
+</html>

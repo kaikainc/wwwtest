@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>查询平台</title>
+
+    <link rel="stylesheet" href="/static/bootstrap-4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/fontawesome-5.0.13/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/static/pnotify-3.2.1/pnotify.css">
+    <link rel="stylesheet" href="/static/pnotify-3.2.1/pnotify.brighttheme.css">
+    <link rel="stylesheet" href="/static/css/login.css?v=0.0.3" />
+    <style>
+        .verify-input {
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid ">
+        <div class="container ">
+            <div class="row ">
+                <div class="col-sm-8 login-box">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-7 log-det">
+                            <div class="small-logo">
+                                <i class="fab fa-asymmetrik"></i> 查询平台
+                            </div>
+                            <h2>登录</h2>
+                            
+                            <div class="row">
+                                <p class="small-info"></p>
+                            </div>
+                            
+                            <form action={{ url }} method='POST'>
+                            <div class="text-box-cont">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control" name="username" id="username" placeholder="用户名" aria-label="username" aria-describedby="basic-addon1">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-lock"></i></span>
+                                    </div>
+                                    <input type="password" class="form-control" name="pwd" id="pwd" placeholder="密码" aria-label="password" aria-describedby="basic-addon1">
+                                </div>
+				                <div class="verify-input input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-key"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control" name="verifycode" id="verifycode" placeholder="验证码" aria-label="verifycode" aria-describedby="basic-addon1">
+                                </div>
+                                <div class="row">
+                                    
+                                </div>
+                                <div class="input-group center mb-3">
+                                    <button class="btn btn-success" type="submit" name="submit"><span style="font-size:14px;">登录</span></button>
+                                    <input name=_csrf_token type=hidden value="{{ csrf_token() }}">
+                                </div>    
+                            </div>
+                            </form>
+                            {% if login_failed %}  
+                                <div class="error" style="display: none">{{ login_error }}</div>
+                            {% endif %}
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="/static/js/jquery-3.3.1.min.js"></script>
+<script src="/static/js/popper.min.js"></script>
+<script src="/static/bootstrap-4.1.1/js/bootstrap.min.js"></script>
+<script src="/static/pnotify-3.2.1/pnotify.js"></script>
+<script>
+    function create_verify_code() {
+      var img = $('<img id="authcode_img" alt="验证码" src="/makeimage?v='+Math.random()+'" />');
+      $("#verifycode").after(img);
+    }
+
+    $().ready(function () {
+        create_verify_code();
+
+        $("#authcode_img").on('click', function(){
+          var img_url = "/makeimage?v=" + Math.random();
+          $(this).attr("src", img_url);
+        });
+
+        {% if login_failed %}
+          new PNotify({
+            text: $(".error").text(),
+            styling: "brighttheme",
+            type: "info",
+          });
+        {% endif %}
+
+        new PNotify({
+            title: "重要通知",
+            text: "首次登录统一使用初始密码登录，初始密码是: 123456",
+            styling: "brighttheme",
+            type: "notice"
+        });
+    });
+</script>
+</html>

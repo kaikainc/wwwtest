@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="shortcut icon" href="/static/img/favicon.ico">
+
+    <link rel="stylesheet" href="/static/bootstrap-4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/bootstrap-4.1.1/css/docs.min.css">
+    <link rel="stylesheet" href="/static/fontawesome-5.0.13/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/static/icomoon/zstyle.css?v=0.2.0">
+
+    <link rel="stylesheet" href="/static/css/colorbox.css">
+    <link rel="stylesheet" href="/static/css/animate.min.css" >
+
+    <link rel="stylesheet" href="/static/css/style.css?v=0.2.10">
+
+    {% block extra_css %}{% endblock %}
+    
+    <title>查询平台</title>
+</head>
+
+<body>
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 border-bottom box-shadow">
+        <nav id="nav-menu-container">
+            <ul class="nav-menu">
+                <li><a href="/index">首页</a></li>
+                <li>
+                    <a href="/main/home">概览</a>
+                </li>
+                
+                <li class="menu-has-children"><a href="">搜索</a>
+                    <ul>
+                        <li><a href="/cust/show_search_cust">搜索客户</a></li>                       
+                    </ul>
+                </li>
+
+                <li><a href="/logout">退出登录</a></li>                   
+        
+            </ul>
+        </nav>
+        <a class="btn btn-outline-primary" href="#">{{ cc_name }}</a>
+    </div>
+
+    {% block header %}{% endblock %}
+
+    <div class="container">
+        <div class="watermask"></div>
+        {% block content %}{% endblock %}
+
+        <hr class="mt-5">
+        <footer class="d-flex justify-content-between">
+            <p class="p-3 px-md-4">
+                © 2020 
+            </p>
+            
+        </footer>
+        <nav class="sps sps--blw">
+            <a href="" class="back-to-top">
+                <i class="fas fa-arrow-circle-up"></i>
+            </a>
+        </nav>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="/static/js/jquery-3.3.1.min.js"></script>
+    <script src="/static/js/popper.min.js"></script>
+    <script src="/static/js/highcharts.js?v=6.1.4"></script>
+    <script src="/static/js/jquery.colorbox.js"></script>
+    <script src="/static/bootstrap-4.1.1/js/bootstrap.min.js"></script>
+    <script src="/static/superfish/hoverIntent.js"></script>
+    <script src="/static/superfish/superfish.min.js"></script>
+    <script src="/static/js/jquery.sparkline.js"></script>
+    <script src="/static/js/tools.js"></script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip({
+                delay: {
+                    "show": 500,
+                    "hide": 300
+                }
+            })
+        })
+    </script>
+    {% block extra_js %}{% endblock %}
+    <script>
+        $().ready(function () {
+            
+            if ($(location)[0].pathname == '/index') {
+                $(".nav-menu li:nth-child(1)").addClass("menu-active")
+            }
+            if ($(location)[0].pathname == '/main/home') {
+                $(".nav-menu li:nth-child(2)").addClass("menu-active")
+            }
+            if (/^\/(qry)|(fix)|(cim)|(ins)|(fund)/.test($(location)[0].pathname)) {
+                $(".nav-menu li:nth-child(3)").addClass("menu-active")
+            }
+            if (/^\/(cust)|(chl)|(qrcode)/.test($(location)[0].pathname)) {
+                $(".nav-menu li:nth-child(4)").addClass("menu-active")
+            }
+            if (/^\/ck/.test($(location)[0].pathname)) {
+                $(".nav-menu li:nth-child(5)").addClass("menu-active")
+            }
+            if (/^\/tool/.test($(location)[0].pathname)) {
+                $(".nav-menu li:nth-child(5)").addClass("menu-active")
+            }
+
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > 100) {
+                    $('.sps').fadeIn('slow');
+                } else {
+                    $('.sps').fadeOut('slow');
+                }
+            });
+
+            $('.sps').click(function(){
+                $('html, body').animate({scrollTop : 0}, 1500);
+                return false;
+            });
+
+            $('a[href*="#calc"]:not([href="#calc"])').on('click', function () {
+                var target = $(this.hash);
+                if (target.length) {
+                    console.log(this.hash);
+                    var top_space = 0;
+                    $('html, body').animate({
+                        scrollTop: target.offset().top - top_space
+                    }, 1500);
+                }
+                return false;
+            });
+
+            // Initiate superfish on nav menu
+            $('.nav-menu').superfish({
+                animation: {opacity:'show'},
+                speed: 400
+            });
+        });
+    </script>
+    <script>
+        function create_water_mark() {
+            var url = "/makewater?v="+Math.random();
+            // console.log(url);
+            $('.watermask').css(
+                'background', 'url(' + url + ')' + ' repeat 0 0'
+            );
+        }
+        $().ready(function () {
+            create_water_mark();
+        });
+    </script>
+
+    <noscript>警告: 您的浏览器不支持或禁止使用javascript!</noscript>
+</body>
+
+</html>

@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/static/bootstrap-4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/fontawesome-5.0.13/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/static/bootstrap-4.1.1/css/docs.min.css">
+
+    <link rel="stylesheet" href="/static/icomoon/zstyle.css?v=0.0.2">
+    <link rel="stylesheet" href="/static/css/animate.min.css" >
+
+    <link rel="stylesheet" href="/static/css/style.css?v=0.2.10">
+    
+    <style>
+
+        .bd-masthead {
+          background-color:azure;
+        }
+        
+        .bd-masthead h1 {
+          font-size: 3.05rem;
+        }
+        .masthead-followup {
+          margin-top: 20px;
+        }
+
+        blockquote p {
+            padding: 15px;
+            background: #eee;
+            border-radius: 5px;
+            margin-bottom: 0;
+        }
+
+        blockquote p::before {
+            content: '\201C';
+        }
+
+        blockquote p::after {
+            content: '\201D';
+        }
+
+        blockquote footer {
+            float: right;
+            font-size: 12px;
+        }
+    </style>
+    
+    <title>查询平台</title>
+</head>
+<body>
+  <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 border-bottom box-shadow">
+    <nav id="nav-menu-container">
+        <ul class="nav-menu">
+            <li><a href="/index">首页</a></li>
+            <li>
+                <a href="/main/home">概览</a>
+            </li>
+            
+            <li><a href="/logout">退出登录</a></li>                   
+    
+        </ul>
+    </nav>
+    
+  </div>  
+    <main class="bd-masthead" role="main">
+        <div class="container">
+          <div class="row">
+            <div class="col-6 mx-auto col-md-4 order-md-2">
+              <img style="border-radius: 20px" src="/static/img/team.jpg" width="350px" height="220">
+            </div>
+            <div class="col-md-8 order-md-1 text-center text-md-left pr-md-5">
+              <h1 class="mb-3">查询平台 V1.0</h1>
+              <p class="lead mb-4">
+                提供快速便捷查询
+              </p>
+              
+            </div>
+          </div>
+      
+        </div>
+    </main>
+
+    <div class="masthead-followup">
+        <div class="container">
+
+            <hr class="mt-5">
+            <footer class="d-flex justify-content-between">
+                <p class="p-3 px-md-4">
+                    © 2020 
+                </p>
+                
+            </footer>
+        </div>
+    </div>
+     
+    <script src="/static/js/jquery-3.3.1.min.js"></script>
+    <script src="/static/js/popper.min.js"></script>
+    <script src="/static/bootstrap-4.1.1/js/bootstrap.min.js"></script>
+    <script src="/static/superfish/hoverIntent.js"></script>
+    <script src="/static/superfish/superfish.min.js"></script>
+    <script src="/static/js/tools.js"></script>
+    <script>
+      $().ready(function () {
+          
+        if ($(location)[0].pathname == '/index') {
+                $(".nav-menu li:nth-child(1)").addClass("menu-active")
+            }
+            if ($(location)[0].pathname == '/main/home') {
+                $(".nav-menu li:nth-child(2)").addClass("menu-active")
+            }
+            if (/^\/(qry)|(fix)|(cim)|(ins)|(fund)/.test($(location)[0].pathname)) {
+                $(".nav-menu li:nth-child(3)").addClass("menu-active")
+            }
+            if (/^\/(cust)|(chl)|(qrcode)/.test($(location)[0].pathname)) {
+                $(".nav-menu li:nth-child(4)").addClass("menu-active")
+            }
+            if (/^\/ck/.test($(location)[0].pathname)) {
+                $(".nav-menu li:nth-child(5)").addClass("menu-active")
+            }
+            if (/^\/tool/.test($(location)[0].pathname)) {
+                $(".nav-menu li:nth-child(5)").addClass("menu-active")
+            }
+
+          $(window).scroll(function() {
+              if ($(this).scrollTop() > 100) {
+                  $('.sps').fadeIn('slow');
+              } else {
+                  $('.sps').fadeOut('slow');
+              }
+          });
+
+          $('.sps').click(function(){
+              $('html, body').animate({scrollTop : 0}, 1500);
+              return false;
+          });
+
+          $('a[href*="#calc"]:not([href="#calc"])').on('click', function () {
+              var target = $(this.hash);
+              if (target.length) {
+                  console.log(this.hash);
+                  var top_space = 0;
+                  $('html, body').animate({
+                      scrollTop: target.offset().top - top_space
+                  }, 1500);
+              }
+              return false;
+          });
+
+          // Initiate superfish on nav menu
+          $('.nav-menu').superfish({
+              animation: {opacity:'show'},
+              speed: 400
+          });
+      });
+  </script>
+</body>
+</html>

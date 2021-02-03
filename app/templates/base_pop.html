@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/static/bootstrap-4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/bootstrap-4.1.1/css/docs.min.css">
+    <link rel="stylesheet" href="/static/fontawesome-5.0.13/css/fontawesome-all.min.css">
+
+    <link rel="stylesheet" href="/static/css/style.css?v=0.2.1">
+    
+    {% block extra_css %}{% endblock %}
+
+    <title>查询平台</title>
+</head>
+
+<body>
+    <div class="watermask"></div>
+    {% block content %}{% endblock %}
+
+    <script src="/static/js/jquery-3.3.1.min.js"></script>
+    <script src="/static/js/popper.min.js"></script>
+    <script src="/static/bootstrap-4.1.1/js/bootstrap.min.js"></script>
+
+    {% block extra_js %}{% endblock %}
+
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip({
+                delay: {
+                    "show": 500,
+                    "hide": 300
+                }
+            })
+        })
+    </script>
+    <script>
+        function create_water_mark() {
+            var url = "/makewater?v="+Math.random();
+            console.log(url);
+            $('.watermask').css(
+                'background', 'url(' + url + ')' + ' repeat 0 0'
+            );
+        }
+        $().ready(function () {
+            create_water_mark();
+        });
+    </script>
+    <noscript>警告: 您的浏览器不支持或禁止使用javascript!</noscript>
+</body>
+
+</html>
